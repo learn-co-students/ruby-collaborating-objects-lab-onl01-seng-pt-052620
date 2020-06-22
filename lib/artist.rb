@@ -8,38 +8,40 @@ class Artist
 
   def initialize(name)
     @name = name
-    @songs = []
-    save
+    @@all << self 
   end
 
   def self.all
     @@all
   end
 
-  def save
-    @@all << self
-  end
-
   def add_song(song)
-    # binding.pry
-    # song.artist = self
-    # self.all
-    @songs << song
-
+   song.artist = self 
   end
 
   def songs
-    @songs
+    Song.all.select do |song|
+        song.artist == self
+    end  
+  end  
+
+  def print_songs
+    songs.each {|song| puts song.name}
   end
 
-  def self.find_or_create_by_name(artist)
-    # binding.pry
-    artist_search = @@all.find {|listing| listing.name == artist}
-    if artist_search == artist
-      return artist
-    else
-      Artist.new(artist)
-    end
-  end
+
+
+
+  def self.find_or_create_by_name(name)
+    an_artist = @@all.find do |art|
+        art.name == name 
+   end 
+
+   if an_artist 
+        an_artist
+   else
+       new_artist = Artist.new(name)
+   end      
+end 
 
 end
