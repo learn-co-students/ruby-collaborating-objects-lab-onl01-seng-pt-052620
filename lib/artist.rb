@@ -45,7 +45,8 @@ class Artist
     end
   end
 
-  def print_songs
+  def print_songs #prints a list of all beyonce's songs
+    Song.all.each {|song| puts song.name if song.artist == self} #iterates through
+    #all the songs ever and prints the ones that are made by beyonce
   end
-
 end
