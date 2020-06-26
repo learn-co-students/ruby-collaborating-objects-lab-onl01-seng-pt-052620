@@ -33,7 +33,6 @@ class Artist
 
   def self.create(name) #to create instance of artist if it doesn't exist
     artist = Artist.new(name) #initializes new instance of artist
-    artist.save #calls save method on this new artist
     artist #returns the new artist object
   end
 
