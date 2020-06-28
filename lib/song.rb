@@ -32,8 +32,8 @@ class Song
   end
 
   def artist_name=(name)
-    artiss = Artist.find_or_create_by_name(name)
-    self.artist = artiss
+    artist_name = Artist.find_or_create_by_name(name)
+    self.artist = artist_name
     artist.add_song(self)
   end
 end
